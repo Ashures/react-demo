@@ -59,6 +59,7 @@ body {
     font: bold 2em sans-serif;
     background-color: rgb(255, 204, 0);
     transition: 100ms;
+    color: var(--main-bg-color);
 }
 
 .add-item-form .form-row > button:hover {
