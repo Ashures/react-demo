@@ -1,9 +1,68 @@
+:root {
+    --main-bg-color: rgb(29, 20, 43);
+}
+
 * {
     box-sizing: border-box;
 }
+
 
 body {
     margin: 0;
     background-color: rgb(29, 20, 43);
     color: white;
+}
+
+.add-item-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-item-form .form-row > * {
+    display: block;
+    text-align: center;
+}
+
+.add-item-form .form-row label {
+    font: 5rem sans-serif;
+    text-transform: lowercase;
+}
+
+.add-item-form .form-row #item {
+    padding: 0;
+    display: inline-block;
+    width: 15em;
+    height: 2em;
+    font: 2rem sans-serif;
+    background-color: rgb(137, 52, 206);
+    color: white;
+    border: none;
+    border-radius: .5em 0 0 .5em;
+    transition: 100ms;
+}
+
+.add-item-form .form-row #item:hover,
+.add-item-form .form-row #item:focus {
+    background-color: rgb(114, 39, 185);
+    border-radius: 1em 0 0 1em;
+}
+
+.add-item-form .form-row > button {
+    margin-left: .2rem;
+    display: inline-block;
+    border: none;
+    border-radius: 0 .5em .5em 0;
+    padding: 0;
+    width: 2em;
+    height: 2em;
+    font: bold 2em sans-serif;
+    background-color: rgb(255, 204, 0);
+    transition: 100ms;
+}
+
+.add-item-form .form-row > button:hover {
+    border-radius: 0 1em 1em 0;
+    background-color: rgb(255, 164, 0);
+    cursor: pointer;
 }
