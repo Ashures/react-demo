@@ -1,9 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TodoForm } from "./TodoForm";
 import "./style.css";
+import { TodoList } from "./TodoList";
 
 export default function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    const localValue = localStorage.getItem("ITEMS");
+    if (localValue === null) return [];
+    return JSON.parse(localValue);
+  });
+
+  useEffect(() => {
+    localStorage.setItem("ITEMS", JSON.stringify(todos));
+  }, [todos]);
 
   function addTodo(title) {
     setTodos((currentTodos) => {
@@ -41,23 +50,7 @@ export default function App() {
 
       <TodoForm onSubmit={addTodo} />      
 
-      <div className="list-of-items">
-        <h1>to-do list</h1>
-        <ul>
-          {todos.length === 0 && "no to-dos!"}
-          {todos.map(todo => {
-            return (
-              <li key={todo.id}>
-                <label>
-                  <input type="checkbox" checked={todo.completed} onChange={e => toggleTodo(todo.id, e.target.checked)} />
-                  <p>{todo.title}</p>
-                  <button onClick={() => deleteTodo(todo.id)} className="delete-btn">delete</button>
-                </label>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+      <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
 
     </>
   );

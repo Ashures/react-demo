@@ -90,17 +90,27 @@ body {
 
 .list-of-items > ul {
     width: 100%;
-    max-height: 100%;
+    max-height: 80%;
     padding: 0;
     font: 2em sans-serif;
     text-align: center;
     color: rgb(255, 204, 0);
     text-transform: lowercase;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.list-of-items ul::-webkit-scrollbar {
+    background-color: rgb(45, 30, 82);
+}
+
+.list-of-items ul::-webkit-scrollbar-thumb {
+    background-color: var(--main-bg-color);
 }
 
 .list-of-items ul li {
     background-color: var(--main-bg-color);
-    margin-bottom: 1em;
+    margin-bottom: .5rem;
     list-style-type: none;
 }
 
@@ -112,6 +122,7 @@ body {
     flex-direction: row;
     justify-content: start;
     align-items: center;
+    max-width: 80%;
 }
 
 .list-of-items ul li label > * {
